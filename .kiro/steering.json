@@ -1,0 +1,233 @@
+{
+  "projectName": "Rotary Dialer",
+  "description": "Steering rules and guidelines for Kiro AI when working on the Rotary Dialer project",
+  "version": "1.0.0",
+  
+  "designPrinciples": {
+    "aesthetic": {
+      "style": "nostalgic retro",
+      "era": "1960s-1970s rotary telephone",
+      "mood": "warm, tactile, mechanical",
+      "keywords": ["vintage", "analog", "tactile", "nostalgic", "mechanical"]
+    },
+    
+    "colorGuidelines": {
+      "primary": {
+        "background": "#1a1a1a",
+        "description": "Deep charcoal - evokes bakelite phone bodies"
+      },
+      "accent": {
+        "gold": "#d4af37",
+        "description": "Warm gold - mimics brass dial components"
+      },
+      "secondary": {
+        "brown": "#8b7355",
+        "description": "Aged brown - represents worn metal patina"
+      },
+      "display": {
+        "black": "#0a0a0a",
+        "description": "Near-black - simulates old LED/LCD displays"
+      },
+      "functional": {
+        "callButton": "#2d6d2d",
+        "callIcon": "#4ade80",
+        "description": "Green tones for call action - universal phone symbol"
+      },
+      "rules": [
+        "Always use gold (#d4af37) for interactive elements and highlights",
+        "Maintain high contrast for accessibility while preserving retro feel",
+        "Use shadows and gradients to create depth and tactile appearance",
+        "Avoid bright, saturated colors that break the vintage aesthetic"
+      ]
+    },
+    
+    "animationGuidelines": {
+      "philosophy": "Physics-based and realistic",
+      "principles": [
+        "All animations should feel mechanical and weighted",
+        "Use spring physics (elasticOut) for natural movement",
+        "Rotation should have inertia and resistance",
+        "Timing should match real rotary phone behavior (600-800ms)",
+        "Avoid digital/snappy animations - prefer smooth, continuous motion"
+      ],
+      "parameters": {
+        "springBackDuration": "600ms",
+        "springCurve": "Curves.elasticOut",
+        "notchFeedbackDelay": "50ms",
+        "rotationDamping": "moderate - not too loose, not too stiff"
+      }
+    },
+    
+    "interactionGuidelines": {
+      "gestures": [
+        "Drag-to-rotate is primary interaction",
+        "Only allow clockwise rotation (authentic to real rotary phones)",
+        "Provide immediate visual feedback on touch",
+        "Haptic feedback on every notch crossing",
+        "Audio feedback enhances but doesn't replace haptic"
+      ],
+      "feedback": {
+        "haptic": "HapticFeedback.selectionClick() on notch crossing",
+        "audio": "Mechanical click sound on notch, whoosh on release",
+        "visual": "Subtle color change, shadow depth adjustment"
+      }
+    }
+  },
+  
+  "codingStandards": {
+    "architecture": {
+      "stateManagement": "Use StatefulWidget for local state, Provider for global state if needed",
+      "widgetComposition": "Break down complex widgets into smaller, reusable components",
+      "customPainting": "Use CustomPainter for complex graphics (dial, numbers, decorations)",
+      "animations": "Always use AnimationController with proper disposal"
+    },
+    
+    "bestPractices": [
+      "Always dispose AnimationControllers in dispose() method",
+      "Use const constructors wherever possible for performance",
+      "Implement proper null safety and error handling",
+      "Add meaningful comments for complex physics calculations",
+      "Use named parameters for better code readability",
+      "Follow Flutter style guide for naming conventions"
+    ],
+    
+    "performance": [
+      "Minimize rebuilds by using const widgets",
+      "Use RepaintBoundary for CustomPainter widgets",
+      "Avoid expensive calculations in build() method",
+      "Cache computed values when possible",
+      "Profile animations to ensure 60fps performance"
+    ],
+    
+    "testing": [
+      "Write widget tests for RotaryDialWidget",
+      "Test gesture detection and rotation calculations",
+      "Verify animation completion and disposal",
+      "Test edge cases (rapid rotation, boundary conditions)",
+      "Mock audio and haptic feedback for testing"
+    ]
+  },
+  
+  "featureDevelopment": {
+    "priorities": [
+      "1. Core functionality (dial, display, call) - COMPLETE",
+      "2. Audio integration - IN PROGRESS",
+      "3. Enhanced animations and polish",
+      "4. Call history and contacts",
+      "5. Customization options (themes, sounds)"
+    ],
+    
+    "whenAddingFeatures": [
+      "Maintain retro aesthetic - no modern UI patterns",
+      "Ensure new features feel mechanical and analog",
+      "Add appropriate sound effects for new interactions",
+      "Include haptic feedback for tactile actions",
+      "Test on physical devices for authentic feel",
+      "Document physics calculations and animation parameters"
+    ],
+    
+    "whenRefactoring": [
+      "Preserve existing animation timing and curves",
+      "Maintain color palette consistency",
+      "Keep gesture behavior unchanged unless improving",
+      "Ensure backward compatibility with saved state",
+      "Update tests to match refactored code"
+    ]
+  },
+  
+  "audioIntegration": {
+    "package": "audioplayers",
+    "assets": {
+      "click": "assets/sounds/click.wav",
+      "release": "assets/sounds/release.wav"
+    },
+    "guidelines": [
+      "Use short, crisp sounds (< 200ms) for clicks",
+      "Release sound should be slightly longer (300-500ms)",
+      "Sounds should be mechanical, not electronic",
+      "Consider vintage phone recordings for authenticity",
+      "Implement sound pooling for rapid clicks",
+      "Add volume control and mute option"
+    ],
+    "implementation": [
+      "Preload sounds in initState()",
+      "Use AudioCache for quick playback",
+      "Handle audio errors gracefully",
+      "Dispose audio players in dispose()",
+      "Test on both iOS and Android for consistency"
+    ]
+  },
+  
+  "futureConsiderations": {
+    "enhancedPhysics": [
+      "Add velocity-based rotation (flick gesture)",
+      "Implement friction for more realistic deceleration",
+      "Add slight wobble effect on release",
+      "Consider gyroscope integration for tilt effects"
+    ],
+    
+    "visualEnhancements": [
+      "Add subtle texture to dial surface",
+      "Implement lighting effects (shadows, highlights)",
+      "Create multiple dial skins (brass, chrome, bakelite)",
+      "Add wear/scratch effects for aged appearance",
+      "Animate finger holes during rotation"
+    ],
+    
+    "functionalAdditions": [
+      "Call history with timestamps",
+      "Contact integration with search",
+      "Speed dial favorites",
+      "International dialing support",
+      "Voicemail integration",
+      "Call recording (where legal)"
+    ]
+  },
+  
+  "kiroInstructions": {
+    "whenAskedToModify": [
+      "Always read .kiro/spec.json first to understand current implementation",
+      "Refer to color palette in this file for any UI changes",
+      "Maintain physics-based animation principles",
+      "Test changes don't break existing gesture detection",
+      "Update spec.json if adding new features"
+    ],
+    
+    "whenAskedToDebug": [
+      "Check AnimationController disposal first",
+      "Verify gesture detection boundaries",
+      "Validate rotation angle calculations",
+      "Test on multiple screen sizes",
+      "Check for memory leaks in animations"
+    ],
+    
+    "whenAskedToOptimize": [
+      "Profile CustomPainter performance",
+      "Minimize setState() calls",
+      "Use const constructors aggressively",
+      "Cache expensive calculations",
+      "Consider RepaintBoundary placement"
+    ],
+    
+    "communicationStyle": [
+      "Use nostalgic, warm language when discussing features",
+      "Reference real rotary phone behavior for context",
+      "Explain physics concepts in accessible terms",
+      "Provide code examples with detailed comments",
+      "Suggest testing on physical devices for tactile feedback"
+    ]
+  },
+  
+  "references": {
+    "inspiration": [
+      "Western Electric Model 500 (1949)",
+      "ITT Model 2500 (1968)",
+      "Ericsson Dialog (1960s)"
+    ],
+    "documentation": [
+      "Flutter Animation Documentation: https://docs.flutter.dev/ui/animations",
+      "CustomPainter Guide: https://api.flutter.dev/flutter/rendering/CustomPainter-class.html",
+      "Gesture Detection: https://docs.flutter.dev/ui/interactivity/gestures"
+    ]
+  }
+}

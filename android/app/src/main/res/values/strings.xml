@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rotary Dialer</string>
+    <string name="accessibility_service_description">Allows the Rotary Dial Overlay app to detect when dial pads appear and display the rotary dial interface. This service does not collect or store any personal information.</string>
+    <string name="overlay_notification_title">Rotary Dial Active</string>
+    <string name="overlay_notification_text">Rotary dial overlay is enabled</string>
+</resources>
