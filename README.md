@@ -1,6 +1,7 @@
-# Rotary Dial Overlay
+# Haunted Rotary Dialer 👻📞
 
-A fun Android app that overlays a nostalgic rotary phone dial on your system's dial pad. Experience the thrill of using old rotary phones while making modern calls!
+A Halloween-themed Android app that overlays a nostalgic rotary phone dial on your system dial pad.  
+Built with Flutter + Kotlin + Kiro for the Kiroween Hackathon.
 
 ## 🎯 What It Does
 
@@ -40,6 +41,12 @@ This app provides a simple toggle that, when enabled, displays a realistic rotar
 3. **Rotate**: Drag a number hole clockwise to the finger stop to dial that digit
 4. **Call**: Press the call button to make your call normally
 5. **Disable**: Return to the app and toggle off to use normal dial pad
+ ## How We Used Kiro
+
+- Vibe coding sessions to design the rotary dial physics and math.
+- Spec-driven development using the `/.kiro/specs` folder to guide overlay behavior.
+- Hooks in `/.kiro/hooks` to automate testing and iteration on dial mechanics and accessibility.
+
 
 ## ⚙️ Settings
 
@@ -138,9 +145,10 @@ flutter test test/widget_test.dart
 
 Contributions are welcome! Please feel free to submit issues or pull requests.
 
-## 📄 License
+## 📜 License
 
-[Add your license here]
+This project is licensed under the [MIT License](LICENSE).
+
 
 ## 🙏 Acknowledgments
 
